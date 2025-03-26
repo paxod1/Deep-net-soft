@@ -31,7 +31,7 @@ function Home() {
     }, [addMenuOpen])
 
     async function getAllMenu() {
-        var response = await axios.get('http://localhost:8000/user/getallmenu')
+        var response = await axios.get('https://deep-net-soft.onrender.com/user/getallmenu')
         console.log(response.data);
         setAllMenuList(response.data)
 
@@ -46,7 +46,7 @@ function Home() {
             alert('Please fill in all fields!');
             return;
         }
-        await axios.post('http://localhost:8000/user/addmenu', { menuName, heading })
+        await axios.post('https://deep-net-soft.onrender.com/user/addmenu', { menuName, heading })
         alert('New menu added!');
         setMenuName('');
         setHeading('');
@@ -60,7 +60,7 @@ function Home() {
         await setMenuId(id)
         await setItemHeading(heading)
         try {
-            var response = await axios.get(`http://localhost:8000/user/get-item-menu/${id}`)
+            var response = await axios.get(`https://deep-net-soft.onrender.com/user/get-item-menu/${id}`)
             console.log(response.data);
             setItemList(response.data)
 
@@ -77,7 +77,7 @@ function Home() {
             alert('Please fill in all fields!');
             return;
         }
-        await axios.post('http://localhost:8000/user/additem', { itemName, itemPrice, itemDes, menuId })
+        await axios.post('https://deep-net-soft.onrender.com/user/additem', { itemName, itemPrice, itemDes, menuId })
         alert('New Item added!');
         setAddItemOpen(false)
         setItemDes('')
