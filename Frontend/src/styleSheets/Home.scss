@@ -655,7 +655,7 @@
         @include alignFlex(row, space-between, center);
 
         .contact_card_main {
-            height: 170px;
+            height: 150px;
             width: 30%;
             background-color: #000;
             border: 2px solid wheat;
@@ -690,7 +690,7 @@
 
             .contact_logo {
                 position: absolute;
-                top: -20%;
+                top: -28%;
                 background-color: black;
             }
 
