@@ -25,20 +25,23 @@ function Home() {
     const [menuId, setMenuId] = useState()
     const [itemList, setItemList] = useState([])
     const [itemHeading, setItemHeading] = useState()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         getAllMenu()
-    }, [addMenuOpen])
+    }, [addMenuOpen, addItemOpen])
 
     async function getAllMenu() {
-        var response = await axios.get('https://deep-net-soft.onrender.com/user/getallmenu')
+        setLoading(true)
+        var response = await axios.get('http://localhost:8000/user/getallmenu')
         console.log(response.data);
         setAllMenuList(response.data)
 
         if (response.data) {
-             getOneMenu(response.data[1]._id, response.data[1].heading)
+            getOneMenu(response.data[1]._id, response.data[1].heading)
 
         }
+        setLoading(false)
     }
 
     const handleSubmit = async () => {
@@ -46,7 +49,7 @@ function Home() {
             alert('Please fill in all fields!');
             return;
         }
-        await axios.post('https://deep-net-soft.onrender.com/user/addmenu', { menuName, heading })
+        await axios.post('http://localhost:8000/user/addmenu', { menuName, heading })
         alert('New menu added!');
         setMenuName('');
         setHeading('');
@@ -60,7 +63,7 @@ function Home() {
         await setMenuId(id)
         await setItemHeading(heading)
         try {
-            var response = await axios.get(`https://deep-net-soft.onrender.com/user/get-item-menu/${id}`)
+            var response = await axios.get(`http://localhost:8000/user/get-item-menu/${id}`)
             console.log(response.data);
             setItemList(response.data)
 
@@ -77,7 +80,7 @@ function Home() {
             alert('Please fill in all fields!');
             return;
         }
-        await axios.post('https://deep-net-soft.onrender.com/user/additem', { itemName, itemPrice, itemDes, menuId })
+        await axios.post('http://localhost:8000/user/additem', { itemName, itemPrice, itemDes, menuId })
         alert('New Item added!');
         setAddItemOpen(false)
         setItemDes('')
@@ -143,30 +146,37 @@ function Home() {
             {/** menu list section */}
 
             <section className='home_poster_menu_slect_section'>
-                <div className='home_menu_inner_div'>
-                    {
-                        allMenuList.map((item) => (
-
-                            <div className='home_menu_list_button_section'>
-                                <button
-                                    className={menuButtonClicked == item._id ? 'clicked_menu_button' : 'home_menu_button'}
-                                    onClick={() => { getOneMenu(item._id, item.heading) }}
-                                >
-                                    {item.menuName}
-                                </button>
-
-                            </div>
-
-                        ))
-                    }
-
-                    <button className='home_menu_add_button' onClick={() => setAddMenuOpen(!addMenuOpen)}>
-                        Add Menu
-                    </button>
+                {loading == true ? (
+                    <div className="loading-spinner">
+                        <div className="spinner"></div>
+                    </div>
+                ) : (
 
 
-                </div>
+                    <div className='home_menu_inner_div'>
+                        {
+                            allMenuList.map((item) => (
 
+                                <div className='home_menu_list_button_section'>
+                                    <button
+                                        className={menuButtonClicked == item._id ? 'clicked_menu_button' : 'home_menu_button'}
+                                        onClick={() => { getOneMenu(item._id, item.heading) }}
+                                    >
+                                        {item.menuName}
+                                    </button>
+
+                                </div>
+
+                            ))
+                        }
+
+                        <button className='home_menu_add_button' onClick={() => setAddMenuOpen(!addMenuOpen)}>
+                            Add Menu
+                        </button>
+
+
+                    </div>
+                )}
                 {addMenuOpen && (
                     <div className='home_addmenu_form_main'>
                         <div className="close_botton_addmenu" onClick={() => setAddMenuOpen(false)}>✖</div>
@@ -186,6 +196,7 @@ function Home() {
                         <button onClick={handleSubmit}>Save Menu</button>
                     </div>
                 )}
+
             </section>
 
             {/** items by clicked menu */}
@@ -213,8 +224,6 @@ function Home() {
                         </div>
 
                         <div className='items_displaying_inner_box'>
-
-
                             {itemList.map((item) => (
                                 <div className="item_onebyone" key={item._id}>
                                     <div className="item_details">
