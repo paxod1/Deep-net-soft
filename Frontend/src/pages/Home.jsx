@@ -36,7 +36,7 @@ function Home() {
         setAllMenuList(response.data)
 
         if (response.data) {
-            getOneMenu(response.data[0]._id, response.data[0].heading)
+             getOneMenu(response.data[1]._id, response.data[1].heading)
 
         }
     }
