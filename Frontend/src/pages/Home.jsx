@@ -29,7 +29,7 @@ function Home() {
 
     useEffect(() => {
         getAllMenu()
-    }, [addMenuOpen, addItemOpen])
+    }, [addMenuOpen])
 
     async function getAllMenu() {
         setLoading(true)
@@ -87,6 +87,7 @@ function Home() {
         setItemName('')
         setItemPrice('')
         getOneMenu(menuId)
+        getAllMenu()
     }
 
     return (
