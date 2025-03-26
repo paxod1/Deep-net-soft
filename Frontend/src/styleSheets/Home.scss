@@ -1,0 +1,784 @@
+@mixin alignFlex($direction: row, $just: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $just;
+    align-items: $align;
+}
+
+// Navbar Styles
+.home_navbar_main {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    @include alignFlex();
+
+    .home_navbar_inner_section {
+        height: 80px;
+        width: 85%;
+        display: flex;
+        position: relative;
+
+        .home_navbar_left {
+            flex: 1;
+            @include alignFlex(row, start, end);
+            position: relative;
+
+            .home_navbar_logo_side {
+                @include alignFlex(row, start, end);
+                font-size: 20px;
+                font-weight: 500;
+                position: absolute;
+                bottom: -30%;
+
+
+                .navbar_logo {
+                    height: 50px;
+                    width: 50px;
+                }
+
+                .navbar_text {
+                    color: white;
+                    margin-left: 10px;
+                    line-height: 25px;
+
+                    .navbar_log_firstline {
+                        @include alignFlex(row, start, center);
+
+                        .deep {
+                            color: blue;
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .soft {
+                        color: rgb(154, 154, 154);
+                    }
+                }
+
+            }
+        }
+
+        .home_navbar_right {
+            flex: 0.6;
+            @include alignFlex(row, space-between, end);
+            color: #F5F5F5;
+
+            h5 {
+                font-weight: 400;
+                cursor: pointer;
+
+                &.active {
+                    color: blue;
+                }
+            }
+        }
+
+        .menu_toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown_menu {
+            position: absolute;
+            right: 10px;
+            top: 70px;
+            background-color: #222;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            text-align: center;
+            transition: 0.5s;
+
+            h5 {
+                padding: 10px;
+                cursor: pointer;
+                color: white;
+                text-align: start;
+
+                &:hover {
+                    background-color: blue;
+                    color: white;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .dropdown_menu.show {
+            display: flex;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home_navbar_main .home_navbar_inner_section {
+        justify-content: center;
+        position: relative;
+
+        .home_navbar_left {
+            @include alignFlex(row, center, center);
+            position: absolute;
+            bottom: -30%;
+
+            .navbar_text {
+                display: none;
+            }
+        }
+
+        .home_navbar_right {
+            display: none;
+        }
+
+        .menu_toggle {
+            display: block;
+        }
+
+        .dropdown_menu.show {
+            display: flex;
+        }
+    }
+}
+
+
+// poster section style
+
+.home_poster_main_section {
+    height: 400px;
+    width: 100%;
+    background-image: url('https://img.freepik.com/free-photo/vintage-old-rustic-cutlery-dark_1220-4886.jpg?t=st=1742981986~exp=1742985586~hmac=b99f7fbafe34067cbac75e2816874d24c7667f67661108659541ed83165ce433&w=1380');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.467);
+    background-blend-mode: multiply;
+    @include alignFlex();
+
+    .home_poster_inner {
+        height: 100%;
+        width: 90%;
+        @include alignFlex(column);
+        text-align: center;
+
+        .home_poster_heading {
+            font-size: 65px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 5px rgba(158, 6, 6, 0.664)
+        }
+
+        .home_poster_content {
+            font-family: Kelly Slab;
+            color: rgb(218, 215, 215);
+            width: 45%;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+            .home_poster_heading {
+                font-size: 55px;
+            }
+
+            .home_poster_content {
+
+                width: 90%;
+            }
+        }
+    }
+}
+
+// menu select section
+
+.home_poster_menu_slect_section {
+    padding: 1%;
+    width: 100%;
+    background-image: url('https://res.cloudinary.com/dqgrcovgg/image/upload/v1742984832/menus_background_nl1phn.png');
+    background-color: rgba(0, 0, 0, 0.844);
+    background-blend-mode: multiply;
+    background-size: contain;
+    @include alignFlex(column);
+    position: relative;
+
+    .home_menu_inner_div {
+        height: 100%;
+        width: 90%;
+        @include alignFlex;
+
+
+        .home_menu_add_button {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: none;
+            border: 1px solid blue;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            transition: 0.5s;
+            margin: 10px;
+
+            &:hover {
+                scale: 1.05;
+            }
+
+        }
+
+        .home_menu_list_button_section {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            .home_menu_button {
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border: none;
+                border: 1px solid blue;
+                border-radius: 5px;
+                background-color: black;
+                color: white;
+                transition: 0.5s;
+                margin: 10px;
+
+                &:hover {
+                    scale: 1.05;
+                }
+            }
+
+            .clicked_menu_button {
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border: none;
+                border: 1px solid rgb(65, 65, 246);
+                border-radius: 5px;
+                background-color: rgb(43, 43, 244);
+                color: rgb(255, 255, 255);
+                transition: 0.5s;
+                margin: 10px;
+
+                &:hover {
+                    scale: 1.05;
+                }
+            }
+        }
+
+    }
+
+    .home_addmenu_form_main {
+        height: 300px;
+        width: 80%;
+        background-color: #111;
+        color: white;
+        border: 2px solid blue;
+        border-radius: 10px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1001;
+
+        h2 {
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #222;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: darkblue;
+            }
+        }
+
+        .close_botton_addmenu {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            color: red;
+        }
+    }
+
+
+}
+
+// items showing style
+
+.items_main_section {
+    width: 100%;
+    background-image: url('https://www.vadastonedesign.com/wp-content/uploads/2021/12/Black-Crystal-Rock-Front-1600x1153.jpg');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.627);
+    background-blend-mode: multiply;
+    @include alignFlex(row, space-between);
+
+    .item_image_poster {
+        height: auto;
+    }
+
+
+    .item_displaying_section {
+        height: 80%;
+        width: 80%;
+        border: 2px solid rgb(255, 255, 255);
+        position: relative;
+        position: relative;
+        padding: 5%;
+        margin-bottom: 80px;
+        margin-top: 80px;
+
+        .item_heaiding_main {
+            width: 100%;
+            @include alignFlex();
+            margin-bottom: 2%;
+
+            .line {
+                height: 3px;
+                width: 5%;
+                background-color: rgb(114, 114, 114);
+                margin-right: 3%;
+                margin-left: 3%;
+            }
+
+            h1 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-shadow: 4px 4px 5px rgba(158, 6, 6, 0.664);
+                color: white;
+                position: relative;
+
+            }
+
+        }
+
+        .item_showing_box_image1 {
+            height: 200px;
+            width: 150px;
+            position: absolute;
+            top: -23%;
+            left: -3.5%;
+
+        }
+
+
+        .item_showing_box_image2 {
+            height: 200px;
+            width: 150px;
+            position: absolute;
+            bottom: -11%;
+            right: -0.3%;
+
+
+        }
+
+        .item_showing_button_add_item {
+            height: 100px;
+            width: 40%;
+            margin-right: 30px;
+            border: none;
+            border: 1px dashed white;
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            font-size: 25px;
+        }
+
+        .home_addmenu_form_main {
+            height: 350px;
+            width: 80%;
+            background-color: #111;
+            color: white;
+            border: 2px solid blue;
+            border-radius: 10px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1001;
+
+            h2 {
+                margin-bottom: 20px;
+                color: rgb(255, 255, 255);
+            }
+
+            input {
+                width: 90%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                background-color: #222;
+                color: white;
+                font-size: 16px;
+            }
+
+            button {
+                width: 50%;
+                padding: 10px;
+                border: none;
+                background-color: blue;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: 0.3s;
+
+                &:hover {
+                    background-color: darkblue;
+                }
+            }
+
+            .close_botton_addmenu {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                cursor: pointer;
+                font-size: 20px;
+                color: red;
+            }
+        }
+
+        .items_displaying_inner_box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .item_onebyone {
+                height: auto;
+                width: 40%;
+                padding: 1%;
+                margin-right: 20px;
+                margin-bottom: 10px;
+
+                .item_name {
+                    font-size: 22px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: rgb(206, 205, 205);
+                    @include alignFlex(row, space-between, center);
+
+                    .dotted_line {
+                        flex-grow: 1;
+                        border-bottom: 2px dotted white;
+                        margin: 0 10px;
+                    }
+
+                    .item_price {
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+                }
+
+                .item_description {
+                    font-size: 18px;
+                    color: white;
+                    margin-top: 5px;
+                }
+
+            }
+
+            .item_showing_button_add_item {
+                height: 70px;
+                width: 100%;
+                margin-right: 30px;
+                border: none;
+                border: 1px dashed white;
+                background-color: rgba(0, 0, 0, 0);
+                color: white;
+                font-size: 25px;
+            }
+        }
+
+    }
+}
+
+
+// items showing style responsive
+
+@media screen and (max-width: 768px) {
+    .items_main_section {
+        width: 100%;
+        @include alignFlex;
+
+        .item_displaying_section {
+            .item_heaiding_main {
+                width: 95%;
+                @include alignFlex();
+                margin-bottom: 2%;
+                text-align: center;
+
+                .line {
+                    height: 3px;
+                    width: 5%;
+                    background-color: rgb(114, 114, 114);
+                    margin-right: 3%;
+                    margin-left: 3%;
+                    width: 20%;
+              
+                }
+
+                h1 {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    text-shadow: 4px 4px 5px rgba(158, 6, 6, 0.664);
+                    color: white;
+                    position: relative;
+                   
+
+                }
+            }
+
+            .items_displaying_inner_box {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .item_onebyone {
+                    height: auto;
+                    width: 90%;
+                    padding: 1%;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
+
+                    .item_name {
+                        font-size: 22px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        color: rgb(206, 205, 205);
+                        @include alignFlex(row, space-between, center);
+
+                        .dotted_line {
+                            flex-grow: 1;
+                            border-bottom: 2px dotted white;
+                            margin: 0 10px;
+                        }
+
+                        .item_price {
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .item_description {
+                        font-size: 18px;
+                        color: white;
+                        margin-top: 5px;
+                    }
+
+                }
+            }
+
+            .item_showing_box_image1 {
+
+                height: 150px;
+                width: 100px;
+                position: absolute;
+                top: -10%;
+                left: -7%;
+
+            }
+
+            .item_showing_box_image2 {
+                height: 150px;
+                width: 100px;
+                position: absolute;
+                bottom: -6%;
+                right: -5%;
+
+            }
+        }
+
+        .item_image_poster {
+            display: none;
+        }
+
+    }
+}
+
+// contact section style
+.contact_section_main {
+    height: auto;
+    width: 100%;
+    background-color: black;
+    padding-top: 8%;
+    padding-bottom: 5%;
+    @include alignFlex();
+
+    .contact_section_inner_div {
+        height: 100%;
+        width: 90%;
+        @include alignFlex(row, space-between, center);
+
+        .contact_card_main {
+            height: 170px;
+            width: 30%;
+            background-color: #000;
+            border: 2px solid wheat;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            @include alignFlex(column, center, center);
+            transition: 0.3s ease-in-out;
+            position: relative;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            .contact_card_heading {
+                font-size: 18px;
+                font-weight: bold;
+                color: #0096FF;
+                margin-bottom: 10px;
+            }
+
+            .contact_icon {
+                font-size: 17px;
+                color: rgb(165, 165, 165);
+                margin-bottom: 10px;
+            }
+
+            .contact_details {
+                color: rgb(165, 165, 165);
+                font-size: 16px;
+            }
+
+            .contact_logo {
+                position: absolute;
+                top: -20%;
+                background-color: black;
+            }
+
+            .conact_text {
+                display: flex;
+                font-size: 40px;
+                font-weight: 600;
+                color: white;
+
+                .deep {
+                    color: rgb(24, 24, 248);
+                    margin-right: 5px;
+                }
+
+                .soft {
+                    color: rgb(132, 132, 132);
+                    margin-left: 5px;
+                }
+            }
+
+            .contact_icon_middle_box {
+                font-size: 17px;
+                color: rgb(165, 165, 165);
+                margin-top: 20px;
+                margin-bottom: -40px;
+            }
+
+            .contact_last_card {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+
+                .contact_iconlast_card-left {
+                    flex: .4;
+                    display: flex;
+                    justify-content: end;
+                }
+
+                .contact_details_last_card_right {
+                    flex: 1;
+                    display: flex;
+                    color: rgb(165, 165, 165);
+                    justify-content: start;
+                }
+            }
+        }
+    }
+
+    // contact section style responsive Styles
+    @media screen and (max-width: 768px) {
+        .contact_section_inner_div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .contact_card_main {
+                width: 90%;
+                margin: 10px;
+            }
+
+            .contact_card_main:nth-child(2) {
+                order: -1;
+            }
+        }
+    }
+}
+
+// footer section style
+
+.footer_main {
+    width: 100%;
+    background-color: rgb(36, 36, 36);
+    color: #808080;
+    @include alignFlex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .footer_inner_section {
+        height: 100%;
+        width: 90%;
+        @include alignFlex(row, space-between, center)
+    }
+
+    @media screen and (max-width: 768px) {
+        .footer_inner_section {
+            height: 100%;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
