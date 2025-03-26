@@ -368,7 +368,7 @@
         .item_heaiding_main {
             width: 100%;
             @include alignFlex();
-            margin-bottom: 2%;
+            margin-bottom: 50px;
 
             .line {
                 height: 3px;
@@ -551,7 +551,7 @@
             .item_heaiding_main {
                 width: 95%;
                 @include alignFlex();
-                margin-bottom: 2%;
+                margin-bottom: 40px;
                 text-align: center;
 
                 .line {
