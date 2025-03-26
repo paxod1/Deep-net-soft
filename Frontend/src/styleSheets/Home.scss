@@ -186,7 +186,8 @@
 
             .home_poster_content {
 
-                width: 97%;
+                width: 98%;
+                  font-size: 18px;
             }
         }
     }
@@ -585,7 +586,7 @@
                     margin-bottom: 10px;
 
                     .item_name {
-                        font-size: 22px;
+                        font-size: 20px;
                         font-weight: bold;
                         text-transform: uppercase;
                         color: rgb(206, 205, 205);
@@ -598,13 +599,13 @@
                         }
 
                         .item_price {
-                            font-size: 20px;
+                            font-size: 18px;
                             font-weight: bold;
                         }
                     }
 
                     .item_description {
-                        font-size: 18px;
+                        font-size: 17px;
                         color: white;
                         margin-top: 5px;
                     }
