@@ -542,6 +542,7 @@
         @include alignFlex;
 
         .item_displaying_section {
+               width: 90%;
             .item_heaiding_main {
                 width: 95%;
                 @include alignFlex();
@@ -626,7 +627,7 @@
                 width: 100px;
                 position: absolute;
                 bottom: -6%;
-                right: -5%;
+                right: -0%;
 
             }
         }
