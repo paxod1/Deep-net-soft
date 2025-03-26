@@ -10,14 +10,14 @@ dotenv.config()
 app.use(express.json())
 
 // cors setuping to make api connection secure
-// const corsOptions = {
-//   origin: 'https://e-commerce-blond-mu.vercel.app', 
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-//   credentials: true, 
-//   optionsSuccessStatus: 200
-// };
+const corsOptions = {
+  origin: 'https://deep-net-soft-x21o.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true, 
+  optionsSuccessStatus: 200
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Data base connection
 mongoose.connect(process.env.MongoUrl).then(() => {
